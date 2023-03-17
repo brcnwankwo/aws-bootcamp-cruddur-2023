@@ -22,7 +22,10 @@ tasks:
       cd $THEIA_WORKSPACE_ROOT/frontend-react-js
       npm i      
       cd $THEIA_WORKSPACE_ROOT
- 
+  - name: Postgres GITPOD IP
+    command: |
+      export GITPOD_IP=$(curl ifconfig.me)
+      source "THEIA_WORKSPACE_ROOT/backend-flask/bin/rds-update-sg-rule"
 vscode:
   extensions:
     - 42Crunch.vscode-openapi
