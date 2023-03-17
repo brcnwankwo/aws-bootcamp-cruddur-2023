@@ -19,4 +19,4 @@ RUN curl -fsSL https://www.postgresql.org/media/keys/ACCC4CF8.asc|sudo gpg --dea
     && sudo apt install -y postgresql-client-13 libpq-dev
 # command: |
 #    export GITPOD_IP=$(curl ifconfig.me)
-#    source "THEIA_WORKSPACE_ROOT/backend-flask/rds-update-sg-rule"
+#    source "THEIA_WORKSPACE_ROOT/backend-flask/bin/rds-update-sg-rule"
