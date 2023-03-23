@@ -10,13 +10,13 @@ RUN cd /workspace \
 RUN sudo apt update \
     && sudo apt install -y apt-utils --no-install-recommends apt-utils \
     && sudo apt autoremove -y \   
-    && npm install -g npm@latest
+    && npm install -g npm@latest \
+    && pip install --upgrade pip
 
 # Install PostgreSQL Client into Gitpod
 RUN curl -fsSL https://www.postgresql.org/media/keys/ACCC4CF8.asc|sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/postgresql.gpg \
     && echo "deb http://apt.postgresql.org/pub/repos/apt/ `lsb_release -cs`-pgdg main" | sudo tee -a /etc/apt/sources.list.d/pgdg.list \
     && sudo apt update \
-    && sudo apt install -y postgresql-client-13 libpq-dev
-# command: |
-#    export GITPOD_IP=$(curl ifconfig.me)
-#    source "THEIA_WORKSPACE_ROOT/backend-flask/bin/rds-update-sg-rule"
+    && sudo apt install -y postgresql-client-13 libpq-dev \
+    && export GITPOD_IP=$(curl ifconfig.me) \
+    && source "THEIA_WORKSPACE_ROOT/backend-flask/bin/rds-update-sg-rule"
