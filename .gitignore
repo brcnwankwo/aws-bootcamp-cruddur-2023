@@ -1,2 +1,3 @@
 scrat.yml
 frontend-react-js/build/*
+backend-flask/bin/ecs/ecs-login
