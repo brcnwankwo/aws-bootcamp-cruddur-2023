@@ -3,6 +3,7 @@ import {ReactComponent as Logo} from './svg/logo.svg';
 import DesktopNavigationLink from '../components/DesktopNavigationLink';
 import CrudButton from '../components/CrudButton';
 import ProfileInfo from '../components/ProfileInfo';
+import React from 'react';
 
 export default function DesktopNavigation(props) {
 

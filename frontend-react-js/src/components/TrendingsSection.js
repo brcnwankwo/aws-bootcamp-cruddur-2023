@@ -1,5 +1,6 @@
 import './TrendingsSection.css';
 import TrendItem from '../components/TrendItem';
+import React from 'react';
 
 export default function TrendingsSection(props) {
   return (

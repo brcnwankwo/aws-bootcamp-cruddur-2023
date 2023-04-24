@@ -1,6 +1,8 @@
 import './MessageGroupFeed.css';
 import MessageGroupItem from './MessageGroupItem';
 import MessageGroupNewItem from './MessageGroupNewItem';
+import React from 'react';
+
 export default function MessageGroupFeed(props) {
   let message_group_new_item;
   if (props.otherUser) {
