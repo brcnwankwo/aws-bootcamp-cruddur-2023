@@ -1,8 +1,8 @@
 import './RecoverPage.css';
 import React from "react";
 import {ReactComponent as Logo} from '../components/svg/logo.svg';
-import { Auth } from 'aws-amplify';
 import { Link } from "react-router-dom";
+import { Auth } from 'aws-amplify';
 
 export default function RecoverPage() {
   // Username is Eamil
