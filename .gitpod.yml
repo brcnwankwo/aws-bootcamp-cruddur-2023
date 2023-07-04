@@ -16,6 +16,10 @@ tasks:
     env:
       AWS_CLI_AUTO_PROMPT: on-partial
     before: |
+      cd /workspace 
+      curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" 
+      unzip awscliv2.zip 
+      sudo /workspace/aws/install
       # Initialize NPM for starting containers
       cd $THEIA_WORKSPACE_ROOT/backend-flask
       pip3 install -r requirements.txt
