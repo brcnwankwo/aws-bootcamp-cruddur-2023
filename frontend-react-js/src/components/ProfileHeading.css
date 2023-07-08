@@ -45,3 +45,8 @@
 .profile_heading .cruds_count {
     color: rgb(255,255,255,0.7);
 }
+
+.profile_heading .bio {
+    padding: 16px;
+    color: rgb(255,255,255,0.7);   
+}
