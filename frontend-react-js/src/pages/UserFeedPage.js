@@ -10,8 +10,6 @@ import ProfileHeading from '../components/ProfileHeading';
 import ProfileForm from '../components/ProfileForm';
 
 
-
-// [TODO] Authenication
 import {checkAuth, getAccessToken} from '../lib/CheckAuth';
 
 export default function UserFeedPage() {
@@ -37,8 +35,9 @@ export default function UserFeedPage() {
       });
       let resJson = await res.json();
       if (res.status === 200) {
-        setActivities(resJson.activities)
+        console.log('setprofile',resJson.profile)
         setProfile(resJson.profile)
+        setActivities(resJson.activities)
       } else {
         console.log(res)
       }
@@ -66,9 +65,10 @@ export default function UserFeedPage() {
           popped={poppedProfile} 
           setPopped={setPoppedProfile} 
         />
-        <div className='activity_feed'></div>
-        <ProfileHeading setPopped={setPoppedProfile} profile={profile} />
-        <ActivityFeed activities={activities} />
+        <div className='activity_feed'>
+          <ProfileHeading setPopped={setPoppedProfile} profile={profile} />
+          <ActivityFeed activities={activities} />
+        </div>
       </div>
       <DesktopSidebar user={user} />
     </article>
