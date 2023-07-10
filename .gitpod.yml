@@ -11,8 +11,13 @@ github:
     addComment: false    
     addBadge: false
 
-tasks:      
-  - name: Workspace Initialization
+tasks:  
+  - name: cfn
+    before: |    
+      pip install cfn-lint
+      cargo install cfn-guard
+      gem install cfn-toml
+  - name: aws-cli
     env:
       AWS_CLI_AUTO_PROMPT: on-partial
     before: |
