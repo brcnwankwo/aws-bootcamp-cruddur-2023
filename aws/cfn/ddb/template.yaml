@@ -54,8 +54,8 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       Architectures: arm64
-      CodeUri: 
-      InlineCode: 
+      CodeUri: ???
+      InlineCode: ???
       PackageType: ZIP
       Handler: lambda_handler
       Runtime: !Ref PythonRuntime
