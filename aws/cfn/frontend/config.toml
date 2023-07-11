@@ -1,0 +1,9 @@
+[deploy]
+bucket = 'cfn-artifacts-brc'
+region = 'us-east-1'
+stack_name = 'CrdFrontend'
+
+[parameters]
+CertificateArn = 'arn:aws:acm:us-east-1:575945681821:certificate/dd4d8ae3-b03f-4757-8564-31e63a13aa4f'
+WwwBucketName = 'www.brandonscloud.link'
+RootBucketName = 'brandonscloud.link'
