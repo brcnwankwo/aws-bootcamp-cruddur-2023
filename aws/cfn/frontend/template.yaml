@@ -54,9 +54,9 @@ Resources:
       Type: A
       AliasTarget:
         # https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-route53-aliastarget.html#cfn-route53-aliastarget-hostedzoneid
-        # Specify Z2FDTNDATAQYW2. This is always the hosted zone ID when you create an alias record that routes traffic to a CloudFront distribution.
+        # Specify Z35SXDOTRQ7X7K. This is always the hosted zone ID when you create an alias record that routes traffic to a CloudFront distribution.
         DNSName: !GetAtt Distribution.DomainName
-        HostedZoneId: Z2FDTNDATAQYW2
+        HostedZoneId: Z35SXDOTRQ7X7K
   WwwBucketDomain:
     # https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-route53-recordset.html
     Type: AWS::Route53::RecordSet
