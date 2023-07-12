@@ -52,6 +52,7 @@ tasks:
     command: |
       "$THEIA_WORKSPACE_ROOT/bin/frontend/generate-env"
       cd frontend-react-js
+      npm cache clean --force
       npm install --force
   - name: flask
     command: |
