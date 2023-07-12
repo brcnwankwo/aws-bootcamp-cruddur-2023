@@ -20,7 +20,8 @@ tasks:
       sudo ./sam-installation/install
       cd $THEIA_WORKSPACE_ROOT
   - name: cfn
-    before: |    
+    before: |   
+      bundle update --bundler 
       pip install cfn-lint
       cargo install cfn-guard
       gem install cfn-toml
