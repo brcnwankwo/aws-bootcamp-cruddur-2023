@@ -1,23 +1,24 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
-Description: |
+Description: | 
   - DynamoDB Table
   - DynamoDB Stream
 Parameters:
   PythonRuntime:
     Type: String
     Default: python3.9
-  MemorySize: 
+  MemorySize:
     Type: String
-    Default: 128
+    Default:  128
   Timeout:
     Type: Number
     Default: 3
-  DeletionProtectionEnabled: 
+  DeletionProtectionEnabled:
     Type: String
     Default: false
 Resources:
   DynamoDBTable:
+    # https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-dynamodb-table.html
     Type: AWS::DynamoDB::Table
     Properties: 
       AttributeDefinitions: 
@@ -27,7 +28,7 @@ Resources:
           AttributeType: S
         - AttributeName: sk
           AttributeType: S
-      TableClass: STANDARD
+      TableClass: STANDARD 
       KeySchema: 
         - AttributeName: pk
           KeyType: HASH
@@ -38,22 +39,22 @@ Resources:
         WriteCapacityUnits: 5
       BillingMode: PROVISIONED
       DeletionProtectionEnabled: !Ref DeletionProtectionEnabled
-      GlobalSecondaryIndexes: 
+      GlobalSecondaryIndexes:
         - IndexName: message-group-sk-index
           KeySchema:
             - AttributeName: message_group_uuid
               KeyType: HASH
             - AttributeName: sk
               KeyType: RANGE
-          Projection: 
+          Projection:
             ProjectionType: ALL
           ProvisionedThroughput: 
             ReadCapacityUnits: 5
-            WriteCapacityUnits: 5 
+            WriteCapacityUnits: 5
       StreamSpecification:
         StreamViewType: NEW_IMAGE
   ProcessDynamoDBStream:
-  # https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-resource-function.html
+    # https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-resource-function.html
     Type: AWS::Serverless::Function
     Properties:
       CodeUri: cruddur-messaging-stream
@@ -68,12 +69,15 @@ Resources:
           Type: DynamoDB
           Properties:
             Stream: !GetAtt DynamoDBTable.StreamArn
+            # TODO - Does our Lambda handle more than record?
             BatchSize: 1
+            # https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-property-function-dynamodb.html#sam-function-dynamodb-startingposition
+            # TODO - This this the right value?
             StartingPosition: LATEST
   LambdaLogGroup:
     Type: "AWS::Logs::LogGroup"
     Properties:
-      LogGroupName: "/aws/lambda/cruddur-messaging-stream"
+      LogGroupName: "/aws/lambda/cruddur-messaging-stream00"
       RetentionInDays: 14
   LambdaLogStream:
     Type: "AWS::Logs::LogStream"
@@ -95,7 +99,7 @@ Resources:
       Policies:
         - PolicyName: "LambdaExecutionPolicy"
           PolicyDocument:
-            Version: "2017-10-17"
+            Version: "2012-10-17"
             Statement:
               - Effect: "Allow"
                 Action: "logs:CreateLogGroup"
