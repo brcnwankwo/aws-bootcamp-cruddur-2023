@@ -2,3 +2,8 @@
 bucket = 'cfn-artifacts-brc'
 region = 'us-east-1'
 stack_name = 'CrdSrvBackendFlask'
+
+[parameters]
+EnvFrontendUrl = 'https://brandonscloud.link'
+EnvBackendUrl = 'https://api.brandonscloud.link'
+DDBMessageTable = 'CrdDdb-DynamoDBTable-G12N0ET4TBR0'
