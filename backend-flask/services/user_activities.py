@@ -14,7 +14,6 @@ class UserActivities:
       sql = db.template('users','show')
       results = db.query_object_json(sql,{'handle': user_handle})
       model['data'] = results
-
       #subsegment = xray_recorder.begin_subsegment('mock-data')
       ## xray ---
       #dict = {
@@ -26,4 +25,4 @@ class UserActivities:
     #finally:  
     ##  # Close the segment
     #  xray_recorder.end_subsegment()
-      return model
+    return model
