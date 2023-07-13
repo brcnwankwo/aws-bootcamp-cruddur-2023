@@ -1,9 +1,10 @@
 import {ReactComponent as HeartIcon} from './svg/heart.svg';
-import React from 'react';
-
+import React from "react";
 export default function ActivityActionLike(props) { 
   const onclick = (event) => {
+    event.preventDefault()
     console.log('toggle like/unlike')
+    return false
   }
 
   let counter;
