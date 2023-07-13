@@ -13,11 +13,12 @@ timestamp = str(time.time()).replace(".","")
 
 filename = f"{timestamp}_{name}.py"
 
-# convert undername name to title case eg. add_bio_column -> AddBioColumn
+# covert undername name to title case eg. add_bio_column -> AddBioColumn
 klass = name.replace('_', ' ').title().replace(' ','')
 
 file_content = f"""
 from lib.db import db
+
 class {klass}Migration:
   def migrate_sql():
     data = \"\"\"
@@ -36,9 +37,9 @@ class {klass}Migration:
     db.query_commit({klass}Migration.rollback_sql(),{{
     }})
 
-    migration = AddBioColumnMigration
+migration = {klass}Migration
 """
-#removes leading and trailing new lines
+#remove leading and trailing new lines
 file_content = file_content.lstrip('\n').rstrip('\n')
 
 current_path = os.path.dirname(os.path.abspath(__file__))
